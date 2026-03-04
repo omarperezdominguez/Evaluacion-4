@@ -1,0 +1,121 @@
+Coordenadas generalizadas
+(th1(t), l2, l3)
+
+Velocidades generalizadas
+/  d              \
+| -- th1(t), 0, 0 |
+\ dt              /
+
+ 
+R(:,:,1) =
+ 
+[cos(th1(t)), -sin(th1(t)), 0]
+[sin(th1(t)),  cos(th1(t)), 0]
+[          0,            0, 1]
+ 
+ 
+R(:,:,2) =
+ 
+[1,  0, 0]
+[0,  0, 1]
+[0, -1, 0]
+ 
+Matriz de Transformación local A1
+/ cos(th1(t)), -sin(th1(t)), 0,  0 \
+|                                  |
+| sin(th1(t)),  cos(th1(t)), 0,  0 |
+|                                  |
+|      0,            0,      1, l1 |
+|                                  |
+\      0,            0,      0,  1 /
+
+Matriz de Transformación global T1
+/ cos(th1(t)), -sin(th1(t)), 0,  0 \
+|                                  |
+| sin(th1(t)),  cos(th1(t)), 0,  0 |
+|                                  |
+|      0,            0,      1, l1 |
+|                                  |
+\      0,            0,      0,  1 /
+
+Matriz de Transformación local A2
+/ 1,  0, 0,  0 \
+|              |
+| 0,  0, 1,  0 |
+|              |
+| 0, -1, 0, l2 |
+|              |
+\ 0,  0, 0,  1 /
+
+Matriz de Transformación global T2
+/ cos(th1(t)),  0, -sin(th1(t)),    0    \
+|                                        |
+| sin(th1(t)),  0,  cos(th1(t)),    0    |
+|                                        |
+|      0,      -1,       0,      l1 + l2 |
+|                                        |
+\      0,       0,       0,         1    /
+
+Matriz de Transformación local A3
+/ 1, 0, 0,  0 \
+|             |
+| 0, 1, 0,  0 |
+|             |
+| 0, 0, 1, l3 |
+|             |
+\ 0, 0, 0,  1 /
+
+Matriz de Transformación global T3
+/ cos(th1(t)),  0, -sin(th1(t)), -l3 sin(th1(t)) \
+|                                                |
+| sin(th1(t)),  0,  cos(th1(t)),  l3 cos(th1(t)) |
+|                                                |
+|      0,      -1,       0,          l1 + l2     |
+|                                                |
+\      0,       0,       0,             1        /
+
+Jacobiano lineal obtenido de forma diferencial
+/ -l3 cos(th1(t)), 0, 0 \
+|                       |
+| -l3 sin(th1(t)), 0, 0 |
+|                       |
+\        0,        0, 0 /
+
+Jacobiano lineal obtenido de forma analítica
+/ -l3 cos(th1(t)), 0, -sin(th1(t)) \
+|                                  |
+| -l3 sin(th1(t)), 0,  cos(th1(t)) |
+|                                  |
+\        0,        1,       0      /
+
+Jacobiano ángular obtenido de forma analítica
+/ 0, 0, 0 \
+|         |
+| 0, 0, 0 |
+|         |
+\ 1, 0, 0 /
+
+Velocidad lineal obtenida mediante el Jacobiano lineal
+/     _________             \
+|      d                    |
+| -l3 -- th1(t) cos(th1(t)) |
+|     dt                    |
+|                           |
+|     _________             |
+|      d                    |
+| -l3 -- th1(t) sin(th1(t)) |
+|     dt                    |
+|                           |
+\             0             /
+
+Velocidad angular obtenida mediante el Jacobiano angular
+/     0     \
+|           |
+|     0     |
+|           |
+| _________ |
+|  d        |
+| -- th1(t) |
+\ dt        /
+
+>> 
